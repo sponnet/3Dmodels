@@ -1,0 +1,212 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+		<title>OpenSCAD SVG Slicer</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="jquery.svg.js"></script>
+		<style type="text/css">
+	.border {padding:3px; border-style:solid; border-width:1px;}
+	.path {border-color:green;}
+	.polygon{border-color:red;}
+	p {color:blue;}
+		</style>
+	</head>
+<body>
+
+	<div id="outer">
+		<h1>SVG utility : Paths to Polygons</h1>
+		<input type="file" id="files" name="files[]" />
+		<output id="list"></output>
+		<div id="loading"><a href="javascript:convert(0.1);">Click here to start converting the paths</a></div>
+		<div class="border" id="svg_in">
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 xml:space="preserve">
+<!--<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">-->
+
+	 <g>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="209,300 401.756,300 401.756,492.756 209,492.756 
+		209,300 	"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" d="M375.684,485.479c9.05,0,16.01-6.961,16.01-16.012V322.94
+		c0-8.701-6.96-15.662-16.01-15.662H235.073c-9.05,0-16.01,6.961-16.01,15.662v146.527c0,9.051,6.96,16.012,16.01,16.012H375.684
+		L375.684,485.479z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M375.684,479.561c5.568,0,10.094-4.523,10.094-10.094V322.94
+		c0-5.569-4.525-9.745-10.094-9.745H235.073c-5.569,0-10.093,4.176-10.093,9.745v146.527c0,5.57,4.524,10.094,10.093,10.094H375.684
+		L375.684,479.561z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" d="M236.813,431.531h6.961c5.917,0,8.701,2.088,8.701,9.049v23.666
+		c0,3.83-2.785,7.311-7.309,7.311h-8.354V431.531L236.813,431.531z M242.729,466.684h1.393c1.392,0,2.088-0.348,2.088-2.785v-24.711
+		c0-2.436-0.696-2.783-2.088-2.783h-1.393V466.684L242.729,466.684z"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" points="257.348,471.557 257.348,431.531 270.573,431.531 
+		270.573,436.752 263.265,436.752 263.265,448.584 270.225,448.584 270.225,453.805 263.265,453.805 263.265,466.336 
+		270.921,466.336 270.921,471.557 257.348,471.557 	"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" points="274.75,471.557 274.75,431.531 280.667,431.531 
+		280.667,466.336 288.324,466.336 288.324,471.557 274.75,471.557 	"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" points="290.064,471.557 290.064,431.531 295.981,431.531 
+		295.981,448.584 301.55,448.584 301.55,431.531 307.467,431.531 307.467,471.557 301.55,471.557 301.55,453.805 295.981,453.805 
+		295.981,471.557 290.064,471.557 	"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" d="M315.819,431.531h9.05l4.524,40.025h-6.265l-1.044-10.791h-4.177
+		l-1.393,10.791h-5.221L315.819,431.531L315.819,431.531z M321.736,455.547l-1.393-16.707h-0.348l-1.393,16.707H321.736
+		L321.736,455.547z"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" points="333.223,431.531 339.139,431.531 339.139,471.557 
+		333.223,471.557 333.223,431.531 	"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" points="356.89,431.531 356.89,436.055 348.884,466.336 
+		356.89,466.336 356.89,471.557 342.619,471.557 342.619,467.379 350.624,436.752 342.619,436.752 342.619,431.531 356.89,431.531 	
+		"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#ED1C2E" points="360.717,471.557 360.717,431.531 373.943,431.531 
+		373.943,436.752 366.635,436.752 366.635,448.584 373.596,448.584 373.596,453.805 366.635,453.805 366.635,466.336 
+		373.943,466.336 373.943,471.557 360.717,471.557 	"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#040607" points="247.602,328.509 262.568,328.509 265.005,325.028 
+		283.451,325.028 294.937,321.2 291.456,333.034 295.981,330.597 297.373,361.921 361.065,361.921 361.065,353.916 308.162,353.916 
+		305.03,339.646 308.162,325.376 371.855,325.376 371.855,341.039 363.85,333.034 314.428,333.034 312.688,339.646 314.428,346.607 
+		364.895,346.607 371.855,353.567 371.855,379.324 379.164,407.168 373.943,421.785 351.32,421.785 354.104,414.477 
+		361.762,412.389 365.242,405.775 355.497,396.378 341.923,413.084 340.531,421.785 316.516,421.785 318.256,414.477 
+		324.869,412.389 342.967,382.456 318.952,392.897 296.329,392.897 290.064,405.428 296.677,415.172 294.937,421.785 
+		269.877,421.785 271.27,414.477 278.927,412.389 272.314,396.03 257,415.172 258.74,421.785 236.813,421.785 238.553,414.477 
+		244.122,411.344 253.867,396.727 249.69,383.152 241.686,386.98 253.519,355.656 248.298,348.347 251.431,344.519 259.088,349.74 
+		265.353,342.779 245.514,342.779 244.122,346.259 240.642,345.563 241.337,339.994 264.309,339.994 261.524,336.514 
+		250.735,338.254 247.602,328.509 	"/>
+</g>
+</svg></div>
+		<div class="border" id="svg_uf"></div>
+	</div>
+	<script>
+	
+
+	  function handleFileSelect(evt) {
+    var files = evt.target.files;
+	
+    if (files.length == 0){
+    	return;
+    }
+    
+    var f = files[0];
+    
+   	if (f.type != "image/svg+xml"){
+   		return;
+   	}
+   	
+   	var reader = new FileReader();
+   	reader.onload = (function(theFile) {
+        return function(e) {
+    		//document.getElementById("loading").innerHTML = '<b>Selected file displayed below. <a href="javascript:convert(1000);">Click here to start converting the paths</a></b>';
+    		
+    		document.getElementById("svg_in").innerHTML = e.target.result;
+    		
+    		$("#le_svg").show();
+         };
+      })(f);
+    reader.readAsText(f);
+    
+  }
+  
+  
+    function convert(precision) {
+
+		minx = 99999999;
+		miny = 99999999;
+		maxx = -99999999;
+		maxy = -99999999;
+	
+		var els = $("#svg_in").find('*');
+		
+		for (i=0;i<els.length;i++) {
+			
+			var el = els[i];
+			switch(el.localName){
+			
+				case 'svg' :
+					break;
+				case 'polygon':
+					tmp=document.createElement('div');
+					$(tmp).svg();
+					tmp2 = $(tmp).svg('get');
+					tmp2.add(el);
+					// get corner
+					for (var j=0;j<el.points.numberOfItems;j+=el.points.numberOfItems / precision){
+						var p = el.points.getItem(j);
+						if (p.x < minx){ minx = p.x; }
+						if (p.x > maxx){ maxx = p.x; }
+						if (p.y < miny){ miny = p.y; }
+						if (p.y > maxy){ maxy = p.y; }
+					}
+
+					$(tmp).addClass('border polygon');
+					$(tmp).id = 'SVG_'+i;
+					$(tmp).appendTo($('#svg_uf'));
+					break;
+				case 'path':
+
+					path = el;
+					var len = path.getTotalLength();
+					a = new Array();
+					for(var j=0; j<len; j+= 5){
+						p=path.getPointAtLength(j);
+						a.push([p.x,p.y]);
+						if (p.x < minx){ minx = p.x; }
+						if (p.x > maxx){ maxx = p.x; }
+						if (p.y < miny){ miny = p.y; }
+						if (p.y > maxy){ maxy = p.y; }
+					}
+					tmp=document.createElement('div');
+					$(tmp).svg();
+					tmp2 = $(tmp).svg('get');
+					tmp2.polygon(null,a);
+					$(tmp).addClass('border path');
+					$(tmp).id = 'SVG_'+i;
+					$(tmp).appendTo($('#svg_uf'));
+					break;
+				default:
+					buf = "unknown " + i;
+					break;
+
+			}
+		}
+		
+		// now re-base this list of polygons
+		divs = $("#svg_uf div");
+		for(var k=0;k<divs.length;k++){
+			els = $(divs[k]).find('*');
+			for (i=0;i<els.length;i++) {
+				
+				var el = els[i];
+				switch(el.localName){
+					case 'polygon':
+						strSCAD = 'polygon(points=[';
+						for (var j=0;j<el.points.numberOfItems;j++){
+							var p = el.points.getItem(j);
+							p.x-=(maxx-minx)/2;
+							p.y-=(maxy-miny)/2;
+							if (j>0) strSCAD+=",";
+							strSCAD+="["+p.x+","+p.y+"]";							
+						}
+						strSCAD+="]);";
+						$(divs[k]).append(strSCAD);
+						break;
+				}
+			}
+			
+			
+			//$(divs[k]).css("width:"+maxx-minx);
+			//$(divs[k]).css("height:"+maxy-miny);
+		}
+		
+		
+  }
+	
+	 $(document).ready(function() {
+	
+	
+	 document.getElementById('files').addEventListener('change', handleFileSelect, false);
+	
+		//$('#svg_in').svg();
+
+		
+		
+	
+				
+
+	});
+	
+		</script>
+	</body>
+</html>
