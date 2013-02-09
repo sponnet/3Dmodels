@@ -1,8 +1,8 @@
 tol=0.1;
 $fn=40;
-width = 18;
-length=20;
-height = 6;
+width = 19;
+length=18;
+height = 5;
 switch_plate_length=3;
 switch_plate_height=5;
 
@@ -22,8 +22,8 @@ module stopswitch_holder(){
 		//translate([0,0,-1]) #cylinder(r=5+tol,h=6);
 
 		// gaten zipties
-		translate([-5,-length/2+switch_plate_length+tol,switch_plate_height/2]) rotate([90,0,0]) #cylinder(r=1.5,h=switch_plate_length+2*tol);
-		translate([5,-length/2+switch_plate_length+tol,switch_plate_height/2]) rotate([90,0,0]) #cylinder(r=1.5,h=switch_plate_length+2*tol);
+		translate([-5,-length/2+switch_plate_length+tol,switch_plate_height/2]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
+		translate([5,-length/2+switch_plate_length+tol,switch_plate_height/2]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
 	
 		// klem gat
 		translate([(-8-tol)/2,0,-height-tol]) #cube(size=[8+tol,length/2+tol,height+2*tol]);
