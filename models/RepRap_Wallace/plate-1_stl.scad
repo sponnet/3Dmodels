@@ -1,0 +1,10 @@
+translate([94, 143, -0.0]) rotate([0, 0, 0]) import_stl("bed_mounts.stl");
+translate([112, 74, -0.0]) rotate([0, 0, 0]) import_stl("base.stl");
+translate([62, 60, -0.0]) rotate([0, 0, 0]) import_stl("base.stl");
+translate([20, 111, -0.0]) rotate([0, 0, 0]) import_stl("y_idler.stl");
+translate([154, 110, -0.0]) rotate([0, 0, 0]) import_stl("x_carriage.stl");
+translate([55, 117, -0.0]) rotate([0, 0, 0]) import_stl("y_bearing_retainers.stl");
+translate([137, 33, -0.0]) rotate([0, 0, 0]) import_stl("x_end_right.stl");
+translate([22, 48, -0.0]) rotate([0, 0, 0]) import_stl("leadscrew_couplers.stl");
+translate([51, 167, -0.0]) rotate([0, 0, 0]) import_stl("idler_single-bearing.stl");
+translate([131, 157, -0.0]) rotate([0, 0, 0]) import_stl("x_end_left.stl");
