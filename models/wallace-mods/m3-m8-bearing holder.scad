@@ -7,10 +7,10 @@ difference(){
 
 	union(){
 		// center m8
-		cylinder(r=4-tol,h=7);
+		cylinder(r=4-tol,h=7/2);
 
-		translate([0,0,-1]) cylinder($fn=50,r=5,h=1);
-		translate([0,0,-1-2]) cylinder($fn=50,r=14,h=2);
+		translate([0,0,-0.75]) cylinder($fn=50,r=5,h=0.75);
+		translate([0,0,-0.75-2]) cylinder($fn=50,r=13,h=2);
 		
 		
 	}
