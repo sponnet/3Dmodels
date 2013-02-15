@@ -30,16 +30,15 @@ module x_carriage2() {
 			}
 
       // belt clip
-      translate([0,-x_carriage_width/2-bearing_size/2-4-5-8-3,0]) cube([17,x_carriage_width,4]);
-
-      translate([0,-x_carriage_width/2-bearing_size/2-4,0]) cube([17,bearing_size/2+4,bearing_size/2+4]);
+      translate([0,-x_carriage_width/2-bearing_size/2-4-5-8-3,bearing_size+4]) cube([17,x_carriage_width,4]);
+      translate([0,-x_carriage_width/2-bearing_size/2-4,bearing_size/2+4]) cube([17,bearing_size/2+4,bearing_size/2+4]);
 
 
       
 		}
 
      // Belt clip hole
-     translate([(17-7)/2,-x_carriage_width/2-bearing_size/2-4-5-8-3+(17-7)/2,-1]) #cube([7,7,7]);
+     translate([(17-7)/2,-x_carriage_width/2-bearing_size/2-4-5-8-3+(17-7)/2,bearing_size+4-1]) #cube([7,7,7]);
 
     
     // slice for clamping bearings
