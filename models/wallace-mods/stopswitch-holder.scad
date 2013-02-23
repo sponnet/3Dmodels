@@ -1,17 +1,17 @@
 tol=0.1;
 $fn=40;
-width = 19;
-length=18;
+width = 15;
+length=25;
 height = 5;
 switch_plate_length=3;
-switch_plate_height=5;
+switch_plate_height=3;
 
 
 stopswitch_holder();
 
 module stopswitch_holder(){
 
-	rotate([0,0,0])
+	rotate([0,0,90])
 	difference() {
 		union() {
 			translate([-width/2,-length/2,-height]) cube(size=[width,length,height]);
@@ -24,10 +24,10 @@ module stopswitch_holder(){
 		//translate([0,0,-1]) #cylinder(r=5+tol,h=6);
 
 		// gaten zipties
-		translate([-5,-length/2+switch_plate_length+tol,switch_plate_height/2]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
-		translate([5,-length/2+switch_plate_length+tol,switch_plate_height/2]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
+		translate([-5,-length/2+switch_plate_length+tol,switch_plate_height-2.5]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
+		translate([5,-length/2+switch_plate_length+tol,switch_plate_height-2.5]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
 
-		translate([-10/2,-length/2+switch_plate_length,switch_plate_height/2]) rotate([0,90,0]) #cylinder(r=1.2,h=10);
+		translate([-10/2-1.2,-length/2+switch_plate_length,switch_plate_height-2.5]) rotate([0,90,0]) #cube(size=[1.2,1.2,10+1.2*2]);
 		
 
 		

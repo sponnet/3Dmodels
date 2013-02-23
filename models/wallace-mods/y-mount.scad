@@ -2,11 +2,11 @@ module printrmount() {
 
 	// rod diameter & distance
 	rod_hole = 8;
-	rod_distance = 62;
+	rod_distance = 60;  // Wallace = 62 ; Printrbot = 60
 
 	// mount holes for zipties distance
-	mountdist = 52;
-	zipperspacing = 8;
+	mountdist = rod_distance - rod_hole;
+	zipperspacing = rod_hole;
 	zipperwidth = 4;
 	zipperlength = 2;
 
