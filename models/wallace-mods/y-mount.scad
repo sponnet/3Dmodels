@@ -1,8 +1,14 @@
+
+
+	rod_hole = 8;
+	rod_distance = 62;  // Wallace = 62 ; Printrbot = 60
+
+	printrmount();
+
+
 module printrmount() {
 
 	// rod diameter & distance
-	rod_hole = 8;
-	rod_distance = 60;  // Wallace = 62 ; Printrbot = 60
 
 	// mount holes for zipties distance
 	mountdist = rod_distance - rod_hole;
