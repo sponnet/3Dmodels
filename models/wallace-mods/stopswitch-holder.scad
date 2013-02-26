@@ -1,7 +1,7 @@
 tol=0.1;
 $fn=40;
 width = 15;
-length=25;
+length=22;
 height = 5;
 switch_plate_length=3;
 switch_plate_height=3;
@@ -24,10 +24,18 @@ module stopswitch_holder(){
 		//translate([0,0,-1]) #cylinder(r=5+tol,h=6);
 
 		// gaten zipties
-		translate([-5,-length/2+switch_plate_length+tol,switch_plate_height-2.5]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
-		translate([5,-length/2+switch_plate_length+tol,switch_plate_height-2.5]) rotate([90,0,0]) #cylinder(r=1.2,h=switch_plate_length+2*tol);
+		translate([-10/2-1.2/2,-length/2+switch_plate_length+tol,switch_plate_height-3-1]) rotate([90,0,0]) #cube(size=[1.2,3,switch_plate_length+2*tol]);
+		translate([5-1.2/2,-length/2+switch_plate_length+tol,switch_plate_height-3-1.2]) rotate([90,0,0]) #cube(size=[1.2,3,switch_plate_length+2*tol]);
 
-		translate([-10/2-1.2,-length/2+switch_plate_length,switch_plate_height-2.5]) rotate([0,90,0]) #cube(size=[1.2,1.2,10+1.2*2]);
+		// haakse gaten zipties
+		rotate([90,0,0]) translate([0,length/2-switch_plate_height,length/2-(8-3)]) {
+		// gaten zipties
+		translate([-10/2-1.2/2,-length/2+switch_plate_length+tol,switch_plate_height-2.5-1]) rotate([90,0,0]) #cube(size=[1.2,3,height+tol*2]);
+		translate([5-1.2/2,-length/2+switch_plate_length+tol,switch_plate_height-2.5-1.2]) rotate([90,0,0]) #cube(size=[1.2,3,height+tol*2]);
+		}
+
+		// extra balkje onder zipties
+		translate([-10/2,-length/2+switch_plate_length,switch_plate_height-2.5]) rotate([0,90,0]) #cube(size=[1.2,1.2,10]);
 		
 
 		
@@ -41,7 +49,7 @@ module stopswitch_holder(){
 		//translate([(-width/2-tol),-length/2+switch_plate_length,0]) #cube(size=[width+2*tol,1,switch_plate_height+2*tol]);
 
 		// schroefgat
-		translate([-width/2-tol,6,-height/2]) rotate([0,90,0]) #cylinder(r=1.5,h=width+2*tol);
+		translate([-width/2-tol,6,-height/2]) rotate([0,90,0]) #cylinder(r=1.5+tol*2,h=width+2*tol);
 		
 
 
