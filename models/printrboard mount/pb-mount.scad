@@ -1,5 +1,5 @@
 width = 8;
-height = 2;
+height = 4;
 tol=0.1;
 
 rod_distance = 60;
