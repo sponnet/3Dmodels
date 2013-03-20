@@ -1,7 +1,7 @@
 
 
 	rod_hole = 8;
-	rod_distance = 62;  // Wallace = 62 ; Printrbot = 60
+	rod_distance = 60;  // Wallace = 62 ; Printrbot = 60
 
 	printrmount();
 
@@ -27,7 +27,7 @@ module printrmount() {
 
 	nema_hole_distance = 31;
 	nema_hole_diameter = 3;
-	nema_tolerance = 0.1;
+	nema_tolerance = 0.15;
 	
 	
 	module halfmount() {

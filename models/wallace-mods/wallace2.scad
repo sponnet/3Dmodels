@@ -37,7 +37,7 @@ da8 = 1 / cos(180 / 8) / 2;
 //!for(x = [1, -1]) for(y = [1, -1]) translate([x * (pulley_size / 2 + 3), y * (pulley_size / 2 + 3), 0]) idler_pulley(true);
 //!for(x = [1, -1]) for(y = [1, -1]) translate([x * (rod_size * 1.5 + 2), y * (rod_size * 1.5 + 2), 0]) foot();
 //z_top_clamp();
-y_bearing_retainer();
+//y_bearing_retainer();
 
 //The following section positions parts for rendering the assembled machine.
 /*
