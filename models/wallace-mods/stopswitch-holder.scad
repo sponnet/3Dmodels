@@ -11,7 +11,7 @@ for(i = [ 0 : 1 : 5 ])
 //translate([0,25*i,0]) stopswitch_holder(2*i/5,5*i/5,4+i/5);
 }
 
-stopswitch_holder();
+stopswitch_holder(1.2,5,5);
 
 module stopswitch_holder(ziptie_w=1.2,ziptie_h=4,height=5){
 
@@ -32,12 +32,12 @@ module stopswitch_holder(ziptie_w=1.2,ziptie_h=4,height=5){
     for(i = [ 0,-90 ]){
         rotate([i,0,0]){
           // gaten zipties
-          translate([-10/2-ziptie_w/2,0,0]) #cube(size=[ziptie_w,switch_plate_length+2*tol+3,ziptie_h,]);
-          translate([10/2-ziptie_w/2,0,0]) #cube(size=[ziptie_w,switch_plate_length+2*tol+3,ziptie_h,]);
+          translate([-10/2-ziptie_w/2,0,0]) cube(size=[ziptie_w,switch_plate_length+2*tol+3,ziptie_h,]);
+          translate([10/2-ziptie_w/2,0,0]) cube(size=[ziptie_w,switch_plate_length+2*tol+3,ziptie_h,]);
         }
     }
 		// extra balkje onder zipties
-		translate([-10/2,-length/2+switch_plate_length,switch_plate_height-2.5]) rotate([0,90,0]) #cube(size=[1.2,2.2,10]);
+		translate([-10/2,-length/2+switch_plate_length,switch_plate_height-2.5]) rotate([0,90,0]) #cube(size=[3.2,2.2,10]);
 		
 
 		
