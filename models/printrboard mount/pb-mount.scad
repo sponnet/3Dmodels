@@ -11,9 +11,9 @@ ziptie_y = 5;
 
 difference(){
   union(){
-    cube([hole_distance+8,width,height]);
+    cube([hole_distance+8+8+4,width,height]);
     bump();
-    translate([hole_distance-8,0,0]) bump();
+    translate([hole_distance+8,0,0]) bump();
   }
 
   ziptiehole();
@@ -24,7 +24,7 @@ difference(){
     translate([8,0,0])ziptiehole();
   }
 
-  translate([hole_distance,0,0]) {
+  translate([hole_distance+8,0,0]) {
     ziptiehole();
    }
 
