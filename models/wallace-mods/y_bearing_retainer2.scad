@@ -4,9 +4,15 @@ y_bearing_retainer2();
 
 module y_bearing_retainer2(){
 difference(){
+	union(){
   translate([3,-20+1,0]) cube([18,20,2]);
-  translate([5,-20+1+4,-1]) #cube([4,2,5]);
-  translate([10+5,-20+1+4,-1]) #cube([4,2,5]);
+  translate([5+1,-20+8,0]) #cube([2,4,4]);
+  translate([10+5+1,-20+8,0]) #cube([2,4,4]);
+//  translate([10+5+1,-20+1+3,-1]) #cube([2,4,5]);
+
+}
+  translate([5+1,-20+1+3,-1]) #cube([2,4,5]);
+  translate([10+5+1,-20+1+3,-1]) #cube([2,4,5]);
 }
 intersection() {
 
@@ -34,6 +40,6 @@ union(){
 		}
 	}
 }
-	translate([0, 0, 5]) rotate(90) rotate([90, 0, 90]) #cylinder(r = (yz_motor_distance + motor_casing - motor_screw_spacing + 10) / 2, h = bearing_size + 30, center = true, $fn = 6);
+	translate([0, 0, 5]) rotate(90) rotate([90, 0, 90]) cylinder(r = (yz_motor_distance + motor_casing - motor_screw_spacing + 10) / 2, h = bearing_size + 30, center = true, $fn = 6);
 }
 }

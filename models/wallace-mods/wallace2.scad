@@ -455,7 +455,7 @@ module base_end() difference() {
 	}
 	translate([-yz_motor_distance / 2 + bearing_size / 2, 0, -bearing_size * sqrt(2) / 4]) rotate([90, -45, 0]) {
 		%cylinder(r = rod_size * da8, h = 100, center = true, $fn = 8);
-		for(side = [0, 1]) mirror([0, 0, side]) translate([0, 0, rod_size / 2 + 2]) {
+		for(side = [0, 1]) mirror([0, 0, side]) translate([0, 0, rod_size / 2 + 8]) {
 			cylinder(r = bearing_size / 2, h = bearing_length, center = false, $fn = 80);
 			cube([bearing_size / 2, bearing_size / 2, bearing_length]);
 		}
