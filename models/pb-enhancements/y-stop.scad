@@ -12,7 +12,7 @@ difference() {
 
 module yhook(){
 	translate([-8,0,0]) cube([8+2*flesh,11,7]);
-	translate([0,-4-flesh+3,0]) cube([18,8,7]);
+	translate([0,-4-flesh+3,0]) cube([28,8,7]);
 	cylinder(r=4+flesh,h=7);
 
 
