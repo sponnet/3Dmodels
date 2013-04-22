@@ -1,22 +1,25 @@
 include <wallace2.scad>;
 
-y_bearing_retainer2();
+rotate ([180,0,0]) translate([0,0,-10]) y_bearing_retainer2();
 
 module y_bearing_retainer2(){
+
+// mounting plate for stopswitch
 difference(){
 	union(){
-  translate([3,-20+1,0]) cube([18,20,2]);
-  translate([5+1,-20+8,0]) #cube([2,4,4]);
-  translate([10+5+1,-20+8,0]) #cube([2,4,4]);
-//  translate([10+5+1,-20+1+3,-1]) #cube([2,4,5]);
+  translate([3,-20+1,10-2]) cube([18,20,2]);
+  translate([5+1,-20+8,10-2+2-4]) cube([2,4,4]);
+  translate([10+5+1,-20+8,10-2+2-4]) cube([2,4,4]);
 
 }
-  translate([5+1,-20+1+3,-1]) #cube([2,4,5]);
-  translate([10+5+1,-20+1+3,-1]) #cube([2,4,5]);
+  translate([5+1,-20+1+3,10-2-1]) cube([2,4,5]);
+  translate([10+5+1,-20+1+3,10-2-1]) cube([2,4,5]);
 }
+
+// retainer itself
 intersection() {
 
-union(){
+ union(){
 
 	difference() {
 		linear_extrude(height = 10, convexity = 5) difference() {
