@@ -1,8 +1,8 @@
 $fn=20;
-rod_size = 12;
+rod_size = 8;
 rod_nut_size = 15; //12 for M6, 15 for M8
-bearing_size = 20.2; //12.5 for LM6UU, 15.5 for LM8UU,LM8SUU, 20.2 for LM12UU
-bearing_length = 30.5; //19.5 for LM6UU, 17.5 for LM8SUU, 24.5 for LM8UU, 30.5 for LM12UU
+bearing_size = 15.5; //12.5 for LM6UU, 15.5 for LM8UU,LM8SUU, 20.2 for LM12UU
+bearing_length = 24.5; //19.5 for LM6UU, 17.5 for LM8SUU, 24.5 for LM8UU, 30.5 for LM12UU
 yz_motor_distance = 25;
 motor_screw_spacing = 31; //26 for NEMA14, 31 for NEMA17
 motor_casing = 45; //38 for NEMA14, 45 for NEMA17
