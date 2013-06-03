@@ -445,6 +445,7 @@ module base_end() difference() {
 			rotate(180 / 8) circle(rod_size * da8, $fn = 8);
 			translate([0, -rod_size / 4, 0]) square([rod_size * .6, rod_size / 2]);
 		}
+		/*
 		// z axis clamping
 		for(h = [8, end_height - motor_casing / 4 - 8]) translate([0, 0, h]) rotate([90, 0, 90]) {
 			cylinder(r = m3_size * da6, h = yz_motor_distance + motor_casing, center = true, $fn = 6);
@@ -452,6 +453,7 @@ module base_end() difference() {
 			translate([0, 0, 0]) cylinder(r = m3_nut_size / 2 + 0.5, h = yz_motor_distance + motor_casing, $fn = 6);
 			translate([0, 0, -rod_size / 2 - 8]) rotate([0, 180, 0]) cylinder(r = m3_size * da6 * 2, h = yz_motor_distance + motor_casing, $fn = 6);
 		}
+		*/
 	}
 	translate([-yz_motor_distance / 2 + bearing_size / 2, 0, -bearing_size * sqrt(2) / 4]) rotate([90, -45, 0]) {
 		%cylinder(r = rod_size * da8, h = 100, center = true, $fn = 8);

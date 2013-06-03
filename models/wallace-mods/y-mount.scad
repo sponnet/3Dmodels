@@ -25,18 +25,19 @@ height = 8;
 plateau_height = 3;
 flesh = 3;
 
-y_mount();
-
-translate([0, width + flesh + 1, 0])
-y_retainer();
-
 // flange parameters ; modify t_y to change appearance
 t_x = nema_hole_distance / 2;
 t_y = 10 * 1.618033;
 t_r = bearing_radius / 2 + 1;
 
-// nema attached to the mount , or not ?
-nema_attached = 1;
+
+// Gallery of these parts
+//y_mount(0);
+translate([0, width + flesh + 1, 0]) 
+y_mount(1);
+translate([0, 2* (width + flesh + 1), 0])
+y_retainer();
+
 
 module y_retainer() {
 
@@ -60,13 +61,13 @@ module y_retainer() {
 
 				translate([nema_hole_distance / 2, 0, 0]) {
 					// base plate
-					cylinder(h = 2, r = bearing_radius / 2 + 1 + tolerance, $fn = 20);
+					cylinder(h = 2, r = bearing_radius / 2 + 1 + tolerance);
 
 					// nema mouting cylinders
-					cylinder(h = 2 + 0.5, r = bearing_hole / 2 + 1, $fn = 20);
+					cylinder(h = 2 + 0.5, r = bearing_hole / 2 + 1);
 
 					// nema mouting cylinders : 2=base plate, 1.5=extra M8 washer
-					cylinder(h = bearing_height + 2 + 1.5, r = bearing_hole / 2 - tolerance, $fn = 20);
+					cylinder(h = bearing_height + 2 + 1.5, r = bearing_hole / 2 - tolerance);
 
 				}
 				//}
@@ -74,7 +75,7 @@ module y_retainer() {
 
 			// nema screw hole
 			translate([nema_hole_distance / 2, 0,  - .1])
-			 # cylinder(h = bearing_height + 2 + 1.5 + 2 * .1, r = nema_hole_diameter / 2 + nema_tolerance, $fn = 20);
+			 # cylinder(h = bearing_height + 2 + 1.5 + 2 * .1, r = nema_hole_diameter / 2 + nema_tolerance,$fn=10);
 
 		}
 
@@ -88,7 +89,8 @@ module y_retainer() {
 
 }
 
-module y_mount() {
+// parameters : nema_attached (0/1) : nema motor attached to the mount , or not ?
+module y_mount(nema_attached=1) {
 
 	module halfmount() {
 		translate([0, -plateau_height, 0]) {
@@ -110,7 +112,7 @@ module y_mount() {
 							// nema mouting cylinders
 							translate([nema_hole_distance / 2, 0, 0])
 							rotate([90, 0, 0])
-							cylinder(h = height, r = nema_hole_diameter / 2 + nema_tolerance + 2, $fn = 20);
+							cylinder(h = height, r = nema_hole_diameter / 2 + nema_tolerance + 2);
 
 							// nema mounting block
 							translate([0, -height, -nema_hole_diameter])
@@ -126,7 +128,7 @@ module y_mount() {
 
 				// rod hole
 				translate([rod_distance / 2,  - rod_hole / 2 - height / 2, -width])
-				cylinder(r = rod_hole / 2, h = width * 2, $fn = 20);
+				cylinder(r = rod_hole / 2, h = width * 2);
 
 				for (z = [-width / 2 + zipperwidth, width / 2 - zipperwidth]) // two iterations, z = -1, z = 1
 				{
@@ -140,7 +142,7 @@ module y_mount() {
 				// nema mouting holes
 				translate([nema_hole_distance / 2, 10, 0])
 				rotate([90, 0, 0])
-				cylinder(h = 50, r = nema_hole_diameter / 2 + nema_tolerance, $fn = 20);
+				cylinder(h = 50, r = nema_hole_diameter / 2 + nema_tolerance,$fn=10);
 
 				if (nema_attached == 1) {
 					// make room for NEMA motor head
@@ -148,7 +150,7 @@ module y_mount() {
 						mirror([0, 0, z]) {
 							translate([0, plateau_height + .1, nema_hole_distance / 2]) {
 								rotate([90, 0, 0])
-								cylinder(h = plateau_height + .2, r = 23 / 2, $fn = 20);
+								cylinder(h = plateau_height + .2, r = 23 / 2);
 							}
 						}
 					}
