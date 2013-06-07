@@ -24,5 +24,8 @@ $fs=0.1;
 
 
 }
-
+difference() {
+translate([-23,-20,0]) import("darthVader_cleaned_fixed.stl");
 pennedop();
+}
+
