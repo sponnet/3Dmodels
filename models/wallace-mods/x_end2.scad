@@ -2,7 +2,7 @@ include <wallace2.scad>;
 
 //x_end2(0);
 //translate([-60,0,0]) 
-x_end2(0);
+x_end2(1);
 
 
 module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
@@ -13,12 +13,6 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
       translate([-1-(motor_casing / 2 + rod_size + bearing_size + 8) / 2 - motor_casing, (x_rod_spacing + 8 + rod_size)/2 + 3, 2])
       {
 
-        translate([motor_casing+4/2+1,-4/2,0]){
-          cylinder(r=4/2,h=motor_casing-1);
-
-          translate([-4/2+1,4/2-x_rod_spacing+4,0]) cube([4-1,x_rod_spacing-4/2-4,motor_casing-1]);
-        }
-
        rotate([90, 0, 0]) 
         {
 
@@ -27,8 +21,9 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
           translate([0,-2,0]) 
           {
             difference(){
-              cube([motor_casing+3,2,(motor_casing / 2 + rod_size + bearing_size + 8)-7]);
-              translate([0,-1,4]) rotate([0,-45,0]) cube([motor_casing*2,2+2,40]);
+              cube([motor_casing+3,2,(motor_casing / 2 + rod_size + bearing_size + 18)-7]);
+              // cut off plate 45 degrees
+			  translate([0,-1,4]) rotate([0,-45,0]) cube([motor_casing*2,2+2,40]);
             }
           }
           // Motor holder
@@ -37,7 +32,7 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
             translate([motor_casing / 2, (x_rod_spacing + 8 + rod_size) / 2, 0]) {
               circle(motor_screw_spacing / 2);
               for(x = [1, -1]) for(y = [1, -1]) translate([x * motor_screw_spacing / 2, y * motor_screw_spacing / 2, 0]) circle(m3_size * da6, $fn = 6);
-              translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing, x_rod_spacing + 8 + rod_size]);
+              #translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1.5, x_rod_spacing + 8 + rod_size]);
             }
           }
           
@@ -60,13 +55,14 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
     difference() {
 			union() {
         // cylinders for bearings & Z-rod
-				for(side = [1, -1]) translate([side * (motor_casing / 4 + rod_size / 2), 0, 0]) cylinder(r=bearing_size / 2 + 3, $fn = 30,h=x_rod_spacing + 8 + rod_size);
+				for(side = [1]) translate([side * (motor_casing / 4 + rod_size / 2), 0, 0]) cylinder(r=bearing_size / 2 + 3, $fn = 30,h=x_rod_spacing + 8 + rod_size);
         // connector between these cylinders
-				translate([-x_rod_spacing/2,-1*(bearing_size / 2 + 3), 0]) cube([motor_casing / 2 + rod_size,2*(bearing_size / 2 + 3),x_rod_spacing + 8 + rod_size]);
+				//translate([-x_rod_spacing/2,-1*(bearing_size / 2 + 3), 0]) cube([motor_casing / 2 + rod_size,2*(bearing_size / 2 + 3),x_rod_spacing + 8 + rod_size]);
 				
         // cylinders for x-rods
-				rotate([90,0,90]){
-          for(side = [1, -1]) 
+		rotate([90,0,90]){
+
+		for(side = [1, -1]) 
           translate([side * (motor_casing / 4 + rod_size / 2), bearing_size / 2 + 3,-1/2*(x_rod_spacing + 8 + rod_size)-3]) 
           cylinder(r=bearing_size / 2 + 3, $fn = 30,h=x_rod_spacing + 8 + rod_size);
 
@@ -83,35 +79,21 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
         rotate([0,90,0]){
           hull(){
             translate([0,0.5*(x_rod_spacing + 8 + rod_size), 0]) {
-              cylinder(r=15,h=0.5*(x_rod_spacing + 8 + rod_size)+3,$fn=50); 
+              cylinder(r=8,h=0.5*(x_rod_spacing + 8 + rod_size)+3,$fn=50); 
               translate([0,-8,0]) cylinder(r=15,h=0.5*(x_rod_spacing + 8 + rod_size)+3,$fn=20); 
             }
           }
-        }
-
-
-
-
-        // idler bolt bearing rest
-        rotate([0,90,0]){
-        hull(){
-				translate([0,0.5*(x_rod_spacing + 8 + rod_size), 0.5*(x_rod_spacing + 8 + rod_size) + 3]) 
-          cylinder(r=7.6/2+1,h=0.5); 
-				translate([0,0.5*(x_rod_spacing + 8 + rod_size)-2, 0.5*(x_rod_spacing + 8 + rod_size) + 3 - 0.5]) 
-          cylinder(r=7.6/2+1,h=0.5); 
+		  
+		              translate([0,0.5*(x_rod_spacing + 8 + rod_size), 0.5*(x_rod_spacing + 8 + rod_size)]) {
+			hull(){
+					  cylinder(r=15,h=3,$fn=50); 
+              translate([0,-8,0]) cylinder(r=15,h=3,$fn=50); 
+			  }
 }
+		  
+		  
         }
-
       }
-
-/*
-        // z-poker plate
-				translate([-x_rod_spacing/2-(bearing_size / 2 + 3)-10,0, 1/2*(x_rod_spacing + 8 + rod_size)-3-20]) 
-          cube([motor_casing / 2 + rod_size + 2*(bearing_size / 2 + 3),5,20]);
-*/
-
-
-
 
         }
 
@@ -137,17 +119,12 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
             #cylinder(r=7.6/2,h=50); 
         }
        }
-/*
-      // z- set screw hole
-      for(side = [1,0, -1]) translate([side*6+10,-x_rod_spacing/2-(bearing_size / 2 + 3)-(10/2),-1]) 
-      #cylinder(r=3/2-0.05,h=5+2);
-*/
 
-      // smooth rod holes
+	   // smooth rod holes
 			rotate([90,0,90]){
          for(side = [1, -1]) 
          translate([side * (motor_casing / 4 + rod_size / 2), bearing_size / 2 + 3,-1/2*(x_rod_spacing + 8 + rod_size)]) 
-         #cylinder(r=rod_size/2 + 0.25, $fn = 30,h=x_rod_spacing + 8 + rod_size+10);
+         #cylinder(r=rod_size/2 + 0.125, $fn = 30,h=x_rod_spacing + 8 + rod_size+10);
       }
 			
 		}
@@ -157,7 +134,8 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
 	}
 
   // z-screw hole
-  if(motor == 0) translate([rod_size/2+2,0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=3/2-0.15,h=50);
+  if(motor == 0) translate([rod_size/2+2,-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=3/2-0.15,h=50);
+  //if(motor == 0) translate([-rod_size/2-2,-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=3/2-0.15,h=50);
 
 
   // M8 nut cap
