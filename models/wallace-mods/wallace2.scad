@@ -404,7 +404,7 @@ module bed_mount() difference() {
 	}
 }
 */
-
+/*
 module y_bearing_retainer() intersection() {
 	difference() {
 		linear_extrude(height = 10, convexity = 5) difference() {
@@ -427,6 +427,7 @@ module y_bearing_retainer() intersection() {
 	}
 	translate([0, 0, 5]) rotate(90) rotate([90, 0, 90]) cylinder(r = (yz_motor_distance + motor_casing - motor_screw_spacing + 10) / 2, h = bearing_size + 10, center = true, $fn = 6);
 }
+*/
 
 module base_end_() difference() {
 	linear_extrude(height = end_height, convexity = 5) difference() {

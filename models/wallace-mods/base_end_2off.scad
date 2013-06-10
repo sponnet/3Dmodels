@@ -11,42 +11,71 @@ module base_end2() difference() {
 
 	// top plate & nema mount
 	union(){
-		linear_extrude(height = 3, convexity = 5) difference() {
+		linear_extrude(height = 4, convexity = 5) difference() {
 			square([yz_motor_distance + motor_casing - motor_screw_spacing + 10, motor_casing + rod_size * 4], center = true);
 			// nema motor arcs
 			for(end = [1]) {
-				for(side = [1,-1]) translate([end * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2, side * motor_screw_spacing / 2, 0]) circle(m3_size * da6, $fn = 6);
+				for(side = [1,-1]) translate([end * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2, side * motor_screw_spacing / 2, 0]) circle(m3_size * da6);
 				translate([end * (yz_motor_distance + motor_casing) / 2, 0, 0]) #circle(motor_screw_spacing / 2);
 			}
+			// clamping holes for bearing retainer
+			for(side = [1,-1]) translate([-1 * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2+4, side * motor_screw_spacing / 2, 0]) square([4+1,10.5],center=true);
+
 		}
 
 		// X-rod retainers
 		translate([0,0,rod_size/2]){
 			for(side = [1, -1]) translate([0, side * 0.5 *(motor_casing + rod_size * 4), 0]) rotate([90, 0, 90]) {
-				translate([-rod_size*side,rod_size,0]) 
-					cylinder(r = (motor_casing + rod_size * 4)/2 - (motor_casing / 2 + rod_size), h = yz_motor_distance + motor_casing - motor_screw_spacing + 10, center = true);
+				//translate([-rod_size*side,rod_size,0]) 
+				//	cylinder(r = (motor_casing + rod_size * 4)/2 - (motor_casing / 2 + rod_size), h = yz_motor_distance + motor_casing - motor_screw_spacing + 10, center = true);
 				// block coupling rod retainer to base plate
-				translate([-rod_size*side,0.5*rod_size-1,]) 
-					cube([rod_size*2,2+ rod_size,yz_motor_distance + motor_casing - motor_screw_spacing + 10],center=true);
+				translate([-rod_size*side,rod_size,]) 
+					cube([rod_size*2,rod_size*2,yz_motor_distance + motor_casing - motor_screw_spacing + 10],center=true);
 			}
 		}
 
-		// block around Z-rods
+		// foot stand
 		translate([yz_motor_distance / 2 - rod_size, 0, (end_height-motor_casing / 4)/2*1.2]) {
 			cube([rod_size,motor_casing + rod_size * 4,(end_height-motor_casing / 4)*1.2],center=true);
 		}
 
-		// extra 	
+		// cylinder around Z-rods  	
 		translate([yz_motor_distance / 2 - rod_size, 0, 0]) {
 			cylinder(r=rod_size * da8 * 1.5, h=end_height-motor_casing / 4);
 		}		
+
+
+	// extra flesh around bottom of bearing retainers
+	translate([-yz_motor_distance / 2 + bearing_size / 2, 0, -bearing_size * sqrt(2) / 4]) rotate([90, -45, 0]) {
+		for(side = [0, 1]) mirror([0, 0, side]) translate([0, 0, rod_size / 2 + 8-1]) {
+			difference(){
+				cube([bearing_size / 2+2, bearing_size / 2+2, bearing_length+2]);
+				cylinder(r = bearing_size / 2, h = bearing_length+2, center = false, $fn = 80);
+			}
+		}
 	}
+
+
+
+}
 	
 	// X-rod holes
 	translate([0,0,rod_size/2]){
 		for(side = [1, -1]) translate([0, side * 0.5 *(motor_casing + rod_size * 4), 0]) rotate([90, 0, 90]) {
 			translate([-rod_size*side,rod_size,0])
 				#cylinder(r = rod_size * da8, h = yz_motor_distance + motor_casing + 20, center = true);
+		}
+	}
+
+	// foot holes
+	translate([0,0,rod_size/2]){
+		for(side = [1, -1]) translate([0, side * 0.5 *(motor_casing), 0]) rotate([90, 0, 90]) {
+			translate([-rod_size*side,15,0]) {
+				hull(){
+				#cylinder(r = 7.9, h = yz_motor_distance + motor_casing + 20, center = true);
+				translate([side*(7.9-1),25,0])#cylinder(r = 1, h = yz_motor_distance + motor_casing + 20, center = true);
+				}
+			}
 		}
 	}
 
@@ -62,10 +91,10 @@ module base_end2() difference() {
 	
 	// bearing retainers
 	translate([-yz_motor_distance / 2 + bearing_size / 2, 0, -bearing_size * sqrt(2) / 4]) rotate([90, -45, 0]) {
-		%cylinder(r = rod_size * da8, h = 100, center = true, $fn = 8);
+//		%cylinder(r = rod_size * da8, h = 100, center = true, $fn = 8);
 		for(side = [0, 1]) mirror([0, 0, side]) translate([0, 0, rod_size / 2 + 8]) {
-			#cylinder(r = bearing_size / 2, h = bearing_length, center = false, $fn = 80);
-			//cube([bearing_size / 2, bearing_size / 2, bearing_length]);
+			cylinder(r = bearing_size / 2, h = bearing_length, center = false, $fn = 80);
+			cube([bearing_size / 2, bearing_size / 2, bearing_length]);
 		}
 	}
 
