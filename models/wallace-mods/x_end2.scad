@@ -28,11 +28,12 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
           }
           // Motor holder
           linear_extrude(height = 4) difference() {
-            square([motor_casing + 3, x_rod_spacing + 8 + rod_size]);
+            square([motor_casing + 40, x_rod_spacing + 8 + rod_size]);
             translate([motor_casing / 2, (x_rod_spacing + 8 + rod_size) / 2, 0]) {
               circle(motor_screw_spacing / 2);
               for(x = [1, -1]) for(y = [1, -1]) translate([x * motor_screw_spacing / 2, y * motor_screw_spacing / 2, 0]) circle(m3_size * da6, $fn = 6);
-              #translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1.5, x_rod_spacing + 8 + rod_size]);
+              #translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1, x_rod_spacing + 8 + rod_size]);
+              translate([motor_casing+2,0,0])rotate([0,0,-45])  #translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1.5, x_rod_spacing + 8 + rod_size]);
             }
           }
           
