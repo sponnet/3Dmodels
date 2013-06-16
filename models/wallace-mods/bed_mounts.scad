@@ -13,13 +13,13 @@ module bed_mount(width) difference() {
 	translate([rod_size / 2 + 1.5, -rod_size / 2 - 6, 5]) rotate([-90, 0, 0]) {
 		hull(){
 			cylinder(r = m3_size * da6, h = max(rod_size + 12, rod_size / 2 + 7 + bed_mount_height, $fn = 6));
-			translate([width,0,0]) #cylinder(r = m3_size * da6, h = max(rod_size + 12, rod_size / 2 + 7 + bed_mount_height, $fn = 6));
+			//translate([width,0,0]) #cylinder(r = m3_size * da6, h = max(rod_size + 12, rod_size / 2 + 7 + bed_mount_height, $fn = 6));
 		}
 		hull(){
 			cylinder(r = m3_nut_size * da6, h = 4, $fn = 6);
-			translate([width,0,0])  #cylinder(r = m3_nut_size * da6, h = 4, $fn = 6);
+			//translate([width,0,0])  #cylinder(r = m3_nut_size * da6, h = 4, $fn = 6);
 		}
 	}
 }
 
-!for(b = [0:1]) mirror([0, b, 0]) for(a = [-1,1]) translate([a * -7.5, 18 + 10*b - 5 * a, 0]) rotate(180 + 90 * a) bed_mount(b*10);
+!for(b = [0:1]) mirror([0, b, 0]) for(a = [-1,1]) translate([a * -7.5, 18 + 0*b - 5 * a, 0]) rotate(180 + 90 * a) bed_mount(b*0);
