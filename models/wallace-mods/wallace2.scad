@@ -388,6 +388,7 @@ module x_end(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
 	translate([(motor_casing / 4 + rod_size / 2), 0, 5]) %rotate(180 / 8) cylinder(r = rod_size * da8, h = 200, center = true, $fn = 8);
 }
 
+/*
 module bed_mount() difference() {
 	linear_extrude(height = 10, convexity = 5) difference() {
 		union() {
@@ -402,7 +403,8 @@ module bed_mount() difference() {
 		cylinder(r = m3_nut_size * da6, h = 4, $fn = 6);
 	}
 }
-
+*/
+/*
 module y_bearing_retainer() intersection() {
 	difference() {
 		linear_extrude(height = 10, convexity = 5) difference() {
@@ -425,8 +427,9 @@ module y_bearing_retainer() intersection() {
 	}
 	translate([0, 0, 5]) rotate(90) rotate([90, 0, 90]) cylinder(r = (yz_motor_distance + motor_casing - motor_screw_spacing + 10) / 2, h = bearing_size + 10, center = true, $fn = 6);
 }
+*/
 
-module base_end() difference() {
+module base_end_() difference() {
 	linear_extrude(height = end_height, convexity = 5) difference() {
 		square([yz_motor_distance + motor_casing - motor_screw_spacing + 10, motor_casing + rod_size * 4], center = true);
 		for(end = [1, -1]) {

@@ -2,7 +2,7 @@
 bearing_height = 7 + 1;
 bearing_radius = 22;
 bearing_hole = 8;
-tolerance = 0.15;
+tolerance = 0.07;
 
 nema_hole_diameter = 3;
 nema_tolerance = 0.15;
@@ -33,9 +33,9 @@ t_r = bearing_radius / 2 + 1;
 
 // Gallery of these parts
 //y_mount(0);
-translate([0, width + flesh + 1, 0]) 
-y_mount(1);
-translate([0, 2* (width + flesh + 1), 0])
+//translate([0, width + flesh + 1, 0]) 
+//y_mount(1);
+//translate([0, 2* (width + flesh + 1), 0])
 y_retainer();
 
 
@@ -73,19 +73,28 @@ module y_retainer() {
 				//}
 			}
 
-			// nema screw hole
-			translate([nema_hole_distance / 2, 0,  - .1])
-			 # cylinder(h = bearing_height + 2 + 1.5 + 2 * .1, r = nema_hole_diameter / 2 + nema_tolerance,$fn=10);
 
 		}
 
 	}
 
-	//rotate([-90, 0, 0]) {
-	halfretainer();
-	mirror([1, 0, 0])
-	halfretainer();
-	//}
+	difference(){
+		halfretainer();
+		// nema screw hole, with little hull for tolerance
+		hull(){
+			translate([nema_hole_distance / 2, 0,  - .1]) # cylinder(h = bearing_height + 2 + 1.5 + 2 * .1, r = nema_hole_diameter / 2 + nema_tolerance,$fn=10);
+			translate([nema_hole_distance / 2+1, 0,  - .1]) # cylinder(h = bearing_height + 2 + 1.5 + 2 * .1, r = nema_hole_diameter / 2 + nema_tolerance,$fn=10);
+		}
+	}
+
+	mirror([1, 0, 0]) {
+		difference(){
+		halfretainer();
+		// nema screw hole
+		translate([nema_hole_distance / 2, 0,  - .1]) # cylinder(h = bearing_height + 2 + 1.5 + 2 * .1, r = nema_hole_diameter / 2 + nema_tolerance,$fn=10);
+	}
+
+	}
 
 }
 
