@@ -1,8 +1,8 @@
 include <wallace2.scad>;
 
-//x_end2(0);
+x_end2(0);
 //translate([-60,0,0]) 
-x_end2(1);
+//x_end2(1);
 
 
 module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {

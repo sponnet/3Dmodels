@@ -30,6 +30,32 @@ module base_end2() difference() {
 
 		}
 
+		// stopswitch retainer
+		mirror([0,1,0]) translate([-(yz_motor_distance + motor_casing - motor_screw_spacing + 10)/2-4,(motor_casing + rod_size * 4)/2-2,0]){
+			difference(){
+				translate([2,2,0])minkowski(){
+					cube([16-4,10-3,2]);
+					cylinder(r=2,h=1);
+				}			
+				translate([2,2,-1]) #cube([1.5,3.5,4]);
+				translate([2+10,2,-1]) #cube([1.5,3.5,4]);
+			}
+		}
+		
+		// clamp for holding cables
+		for(side = [0, 1]) mirror([0, side, 0]) 
+		translate([(yz_motor_distance + motor_casing - motor_screw_spacing + 10)/2-16,(motor_casing + rod_size * 4)/2-2,0]){
+			difference(){
+					union(){
+						cube([14,10,4]);
+						translate([-1,10-2,0])cube([16,2,4]);
+					}
+					translate([7/2,0,-1])cube([7,11,4+2]);
+			}
+		}
+		
+		
+		
 		// X-rod retainer blocks
 		translate([0,0,rod_size/2]){
 			for(side = [1, -1]) translate([0, side * 0.5 *(motor_casing + rod_size * 4), 0]) rotate([90, 0, 90]) {
