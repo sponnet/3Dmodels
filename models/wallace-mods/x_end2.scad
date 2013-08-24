@@ -9,7 +9,19 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
 	union() {
 	
 		if(motor > 0){
-    
+    	
+		// clamp for holding cables
+		for(side = [1]) mirror([0, side, 0]) 
+		translate([(rod_size + bearing_size + 8 + 10)/2-46,(motor_casing/2)+3,0]){
+			difference(){
+					union(){
+						cube([14,10,4]);
+						translate([-1,10-2,0])cube([16,2,4]);
+					}
+					translate([7/2,0,-1])cube([7,11,4+2]);
+			}
+		}
+		
       translate([-1-(motor_casing / 2 + rod_size + bearing_size + 8) / 2 - motor_casing, (x_rod_spacing + 8 + rod_size)/2 + 3, 2])
       {
 
@@ -21,19 +33,19 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
           translate([0,-2,0]) 
           {
             difference(){
-              cube([motor_casing+3,2,(motor_casing / 2 + rod_size + bearing_size + 18)-7]);
+              cube([motor_casing+3,2,(motor_casing / 2 + rod_size + bearing_size + 18)-12]);
               // cut off plate 45 degrees
-			  translate([0,-1,4]) rotate([0,-45,0]) cube([motor_casing*2,2+2,40]);
+			  translate([0,-1,4+2]) rotate([0,-45,0]) cube([motor_casing*2,2+2,40]);
             }
           }
           // Motor holder
-          linear_extrude(height = 4) difference() {
+          linear_extrude(height = 6) difference() {
             square([motor_casing + 40, x_rod_spacing + 8 + rod_size]);
             translate([motor_casing / 2, (x_rod_spacing + 8 + rod_size) / 2, 0]) {
               circle(motor_screw_spacing / 2);
               for(x = [1, -1]) for(y = [1, -1]) translate([x * motor_screw_spacing / 2, y * motor_screw_spacing / 2, 0]) circle(m3_size * da6, $fn = 6);
-              #translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1, x_rod_spacing + 8 + rod_size]);
-              translate([motor_casing+2,0,0])rotate([0,0,-45])  #translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1.5, x_rod_spacing + 8 + rod_size]);
+              translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1, x_rod_spacing + 8 + rod_size]);
+              translate([motor_casing+2,0,0])rotate([0,0,-45]) translate([-(motor_casing * 1.5 - motor_screw_spacing), (motor > 1) ? (motor_casing / 2 - motor_screw_spacing) : 0, 0]) square([motor_casing*1.5, x_rod_spacing + 8 + rod_size]);
             }
           }
           
@@ -135,7 +147,8 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
 	}
 
   // z-screw hole
-  if(motor == 0) translate([rod_size/2+2,-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=3/2-0.15,h=50);
+  if(motor == 0) translate([rod_size/2+2,1.7-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=4/2-0.1,h=50);
+  if(motor == 0) translate([rod_size/2+2,1.7-1*0.5*(x_rod_spacing + 8 + rod_size)+12.1,-1]) cylinder(r=4/2-0.1,h=50);
   //if(motor == 0) translate([-rod_size/2-2,-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=3/2-0.15,h=50);
 
 

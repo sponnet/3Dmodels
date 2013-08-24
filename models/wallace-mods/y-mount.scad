@@ -34,9 +34,9 @@ t_r = bearing_radius / 2 + 1;
 // Gallery of these parts
 //y_mount(0);
 //translate([0, width + flesh + 1, 0]) 
-//y_mount(1);
+y_mount(1);
 //translate([0, 2* (width + flesh + 1), 0])
-y_retainer();
+//y_retainer();
 
 
 module y_retainer() {
