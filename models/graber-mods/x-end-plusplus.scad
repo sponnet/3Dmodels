@@ -3,7 +3,7 @@ bearing_diameter = 15;
 shift = 2;
 
 
-x_carriage_end(1);
+//x_carriage_end(1);
 mirror([1,0,0]) translate([18,15,0]) x_carriage_end(0); 
 
 
