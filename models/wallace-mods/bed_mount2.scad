@@ -13,5 +13,6 @@ module bed_mount2() difference() {
 	translate([rod_size / 2 + 1.5, -rod_size / 2 - 6, 5]) rotate([-90, 0, 0]) {
 		cylinder(r = m3_size * da6, h = max(rod_size + 12, rod_size / 2 + 7 + bed_mount_height, $fn = 6));
 		cylinder(r = m3_nut_size * da6, h = 4, $fn = 6);
+		translate([0,0,-rod_size / 2 + 8+10])#cylinder(r = m3_nut_size * da6, h = 4, $fn = 6);
 	}
 }
