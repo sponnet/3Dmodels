@@ -1,6 +1,6 @@
 include <wallace2.scad>;
 
-x_end2(0);
+x_end2(1);
 //translate([-60,0,0]) 
 //x_end2(1);
 
