@@ -1,6 +1,6 @@
 include <wallace2.scad>;
 
-x_end2(1);
+x_end2(0);
 //translate([-60,0,0]) 
 //x_end2(1);
 
@@ -147,10 +147,12 @@ module x_end2(motor = 0) mirror([(motor == 0) ? 1 : 0, 0, 0]) difference() {
 	}
 
   // z-screw hole
-  if(motor == 0) translate([rod_size/2+2,1.7-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=4/2-0.1,h=50);
-  if(motor == 0) translate([rod_size/2+2,1.7-1*0.5*(x_rod_spacing + 8 + rod_size)+12.1,-1]) cylinder(r=4/2-0.1,h=50);
-  //if(motor == 0) translate([-rod_size/2-2,-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=3/2-0.15,h=50);
-
+  for (m=[0,1]){
+   mirror([0,m,0]){
+    if(motor == 0) translate([rod_size/2+2,1.7-1*0.5*(x_rod_spacing + 8 + rod_size),-1]) cylinder(r=4/2-0.1,h=50);
+    //if(motor == 0) translate([rod_size/2+2,1.7-1*0.5*(x_rod_spacing + 8 + rod_size)+12.1,-1]) cylinder(r=4/2-0.1,h=50);
+   }
+  }
 
   // M8 nut cap
 	translate([-(motor_casing / 4 + rod_size / 2), 0, 5]) rotate(90) #cylinder(r = rod_nut_size / 2, h = x_rod_spacing + 8 + rod_size, $fn = 6);

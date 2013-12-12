@@ -1,7 +1,25 @@
 include <wallace2.scad>;
-y_bearing_retainer();
+$fn=60;
+mirror([0,1,0]) rotate ([0,0,0]) translate([0,0,0]) y_bearing_retainer2();
 
-module y_bearing_retainer() intersection() {
+module y_bearing_retainer2(){
+
+// mounting plate for stopswitch
+mirror([0,0,1]){
+difference(){
+	union(){
+  translate([3,-20+1,-2]) cube([18,20,2]);
+  translate([5+1,-20+8,-2+2-4]) cube([2,4,4]);
+  translate([10+5+1,-20+8,-2+2-4]) cube([2,4,4]);
+
+}
+  translate([5+1,-20+1+3,-2-1]) cube([2,4,5]);
+  translate([10+5+1,-20+1+3,-2-1]) cube([2,4,5]);
+}
+}
+// retainer itself
+
+intersection() {
 	difference() {
 		linear_extrude(height = 10, convexity = 5) difference() {
 			union() {
@@ -22,9 +40,10 @@ module y_bearing_retainer() intersection() {
 		}
 		//screw holes
 		for(side = [1]) translate([side * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2, 0, 5]) rotate(90) rotate([90, 0, 90]) {
-			cylinder(r = m3_size * da6, h = bearing_size, center = true, $fn = 6);
+			cylinder(r = m3_size * da6, h = bearing_size, center = true, $fn = 16);
 			translate([0, 0, bearing_size * sqrt(2) / 4 - 5]) rotate([180, 0, 0]) cylinder(r = m3_size, h = bearing_size, $fn = 30);
 		}
 	}
 	#translate([0, 0, 5]) rotate(90) rotate([90, 0, 90]) cylinder(r = (yz_motor_distance + motor_casing - motor_screw_spacing + 10) / 2, h = bearing_size + 10, center = true, $fn = 6);
+}
 }
