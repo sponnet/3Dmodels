@@ -37,14 +37,14 @@ module x_carriage2() {
      translate([(17-7)/2,-x_carriage_width/2-bearing_size/2-4-5-8-3+(17-7)/2,bearing_size/2+1/2]) cube([7,7,7]);
     
     // slice for clamping bearings
-    translate([-x_carriage_width/2-1,-(x_carriage_width)/2,bearing_size/2+3 ]) cube([x_carriage_width*2+2,x_carriage_width,2]);
+    translate([-x_carriage_width/2,-(x_carriage_width)/2,bearing_size/2 ]) cube([x_carriage_width*2+2,x_carriage_width,2+6]);
     
 		
 		translate([0,0,bearing_size / 2 + 4]) rotate([0,90,0]){
 			
 		// linear bearings
 		translate([0, x_rod_spacing / 2, -x_carriage_width/2]) rotate([0, 0, 0]) {
-			for(end = [0, 1]) mirror([0, end, 0]) translate([0, (end * x_carriage_width),-1 ]) cylinder(r = bearing_size / 2, h = x_carriage_width * 2 + 2, $fn = 30);
+			for(end = [0, 1]) mirror([0, end, 0]) translate([0, (end * x_carriage_width),-1 ]) cylinder(r = bearing_size / 2 - 0.1, h = x_carriage_width * 2 + 2, $fn = 30);
 		}
 		
 		// extruder mount hotend hole
