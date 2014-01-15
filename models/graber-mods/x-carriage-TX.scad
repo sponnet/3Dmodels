@@ -16,9 +16,9 @@ module x_carriage_base(){
  translate([-33-12.5,-11.5,0]) cube([33+25,68,7]);
  // Belt holder base
  // ...left
- translate([-33-12.5-10,20+7-3,0]) cube([12,16-7,17]);
+ translate([-33-12.5-10,20+7-3-3,0]) cube([12,6+16-7,17]);
  // ...right
- translate([-33-12.5-10+33+25+8,20+7-3,0]) cube([10,16-7,17]);
+ translate([-33-12.5-10+33+25+8,20+7-3-3,0]) cube([10,6+16-7,17]);
 }
 
 module x_carriage_beltcut(){
