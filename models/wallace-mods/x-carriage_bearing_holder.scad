@@ -11,6 +11,10 @@ module bearing_base(){
 			translate([0,x_rod_spacing/2,0]) rotate([0,0,90]) horizontal_bearing_base(2);
 			// middle block
 			translate([0,0,h/2])cube([8+25*2,20,h],center=true);
+			// side block
+			translate([0,-32,5/2])cube([14,12,5],center=true);
+//			translate([0,-32-5,5/2])cylinder(r=12/2,h=5,center=true);
+			
 		}
  		// Small bearing holder holes cutter
  		translate([0,-x_rod_spacing/2,0]) rotate([0,0,90]) horizontal_bearing_holes(2);
@@ -23,8 +27,12 @@ module bearing_base(){
 			translate([-hull_w/2,0,0]) #cylinder(h=40,r=18/2,center=true);
 		}
 	
-	translate([50/2,0,0])	#cylinder(h=40,r=4/2 + 0.2,center=true);
-	translate([-50/2,0,0])	#cylinder(h=40,r=4/2 + 0.2,center=true);
+		// screw holes for extruder
+		translate([50/2,0,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
+		translate([-50/2,0,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
+
+		// side block
+		translate([0,-32+1,5/2]) #cube([7,7+1,15],center=true);
 
 
 	}
