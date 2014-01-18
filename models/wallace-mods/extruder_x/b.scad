@@ -29,12 +29,6 @@ include<configuration.scad>;
 //visualization
 if( display_mode == "print")rotate([180,0,0])
 {
-	rotate([0,-90,0])
-	{
-		extruder_base (extruder_base_width,extruder_base_length,extruder_base_thickness, extruder_base_mount_hole_diameter, filament_diameter);
-		extruder_back_plate(extruder_base_width, extruder_base_length, extruder_motor_type, filament_diameter, extruder_base_thickness);
-		extruder_fan_mount(extruder_base_width, extruder_base_length, extruder_fan_mount_thickness,extruder_base_thickness);
-	}
 	if( extruder_motor_type == Nema17) translate([extruder_base_width,-extruder_base_thickness+extruder_base_length/2,-26.1985]) rotate([135,0,90]) extruder_bearing_mount_nema17(extruder_base_width, extruder_base_length , extruder_base_thickness);
 	if( extruder_motor_type == Nema23) translate([extruder_base_width+5,2-extruder_base_thickness+extruder_base_length/2,-42.568]) rotate([135,0,90]) extruder_bearing_mount_nema23(extruder_base_width, extruder_base_length , extruder_base_thickness);
 
