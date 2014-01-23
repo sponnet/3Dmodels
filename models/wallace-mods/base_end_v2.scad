@@ -11,7 +11,8 @@ module base_end2() difference() {
 
 	// top plate & nema mount
 	union(){
-		linear_extrude(height = 4, convexity = 5) difference() {
+		difference(){
+		linear_extrude(height = 6, convexity = 5) difference() {
 			square([yz_motor_distance + motor_casing - motor_screw_spacing + 10, motor_casing + rod_size * 4], center = true);
 			// nema motor arcs
 			for(end = [1]) {
@@ -19,17 +20,28 @@ module base_end2() difference() {
 				for(side = [1,-1]) translate([end * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2, side * motor_screw_spacing / 2, 0]) {
 					// We create a hull, because the NEMA screw spacing tend to be off on some motors.
 					hull(){
-						circle(m3_size * da6);
+						translate([0,side*1,0]) circle(m3_size * da6);
 						translate([0,side*-1,0]) circle(m3_size * da6);
 					}
 				}
 				translate([end * (yz_motor_distance + motor_casing) / 2, 0, 0]) #circle(motor_screw_spacing / 2);
 			}
 			// clamping holes for bearing retainer
-			for(side = [1,-1]) translate([-1 * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2+4, side * motor_screw_spacing / 2, 0]) square([4+1,10.5],center=true);
+			for(side = [1,-1]){
+				translate([-1 * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2+4, side * motor_screw_spacing / 2, 0]) square([4+1,10.5],center=true);
+
+			}
+		}
+
+		// extra block removed for retainer clamp fit...
+		for(side = [1,-1]){
+				translate([-7 -1 * (yz_motor_distance + motor_casing - motor_screw_spacing) / 2+4, side * motor_screw_spacing / 2 , 7]) cube([10,10.5,6],center=true);
+			}
 
 		}
 
+
+				
 		// stopswitch retainer
 		mirror([0,1,0]) translate([-(yz_motor_distance + motor_casing - motor_screw_spacing + 10)/2-4,(motor_casing + rod_size * 4)/2-2,0]){
 			difference(){
@@ -102,8 +114,8 @@ module base_end2() difference() {
 		for(side = [1, -1]) translate([0, side * 0.5 *(motor_casing), 0]) rotate([90, 0, 90]) {
 			translate([-rod_size*side,15,0]) {
 				hull(){
-				#cylinder(r = 7.9, h = yz_motor_distance + motor_casing + 20, center = true);
-				translate([side*(7.9-1),25,0])#cylinder(r = 1, h = yz_motor_distance + motor_casing + 20, center = true);
+				cylinder(r = 7.9, h = yz_motor_distance + motor_casing + 20, center = true);
+				translate([side*(7.9-1),25,0])cylinder(r = 1, h = yz_motor_distance + motor_casing + 20, center = true);
 				}
 			}
 		}
@@ -112,7 +124,7 @@ module base_end2() difference() {
 	// Z-rod holes
 	translate([yz_motor_distance / 2 - rod_size, 0, 0]) {
 		translate([0, 0, -2])  {
-			rotate(180 / 8) #cylinder(r=rod_size * da8, h=end_height-motor_casing / 4, $fn = 8);
+			rotate(180 / 8) #cylinder(r=rod_size * da8 -0.1, h=end_height-motor_casing / 4, $fn = 8);
 			translate([0, -rod_size / 4, 0]) #cube([rod_size * .6, rod_size / 2,end_height-motor_casing / 4]);
 		}
 
