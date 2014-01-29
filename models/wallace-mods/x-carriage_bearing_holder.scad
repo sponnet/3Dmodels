@@ -12,7 +12,7 @@ module bearing_base(){
 			// middle block
 			translate([0,0,h/2])cube([8+25*2,20,h],center=true);
 			// side block
-			translate([0,-32,5/2])cube([14,12,5],center=true);
+			translate([0,-32,h/2])cube([8+25*2,12,h],center=true);
 //			translate([0,-32-5,5/2])cylinder(r=12/2,h=5,center=true);
 			
 		}
@@ -32,7 +32,7 @@ module bearing_base(){
 		translate([-50/2,0,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
 
 		// side block
-		translate([0,-32+1,5/2]) #cube([7,7+1,15],center=true);
+		translate([0,-32,h/2]) #cube([25*2+8-4,8,h+2],center=true);
 
 
 	}
