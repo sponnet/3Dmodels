@@ -12,11 +12,11 @@ module bearing_base(){
 			// middle block
 			translate([0,0,h/2])cube([8+25*2,20,h],center=true);
 			// side block
-			translate([-25-4,-27-20,0])cube([8+25*2,20,h],center=false);
+			translate([-25-4-5,-27-25,0])cube([8+25*2+10,25,h],center=false);
 //			translate([0,-32-5,5/2])cylinder(r=12/2,h=5,center=true);
 			
-		translate([29,-40,0]) beltclamp(h+4);
-		translate([-29-18,-40,0]) beltclamp(h);
+		translate([29,-40,0]) beltclamp(h+4+5);
+		translate([-29-18,-40,0]) beltclamp(h+5);
 
 
 			//side block for belt
@@ -38,8 +38,11 @@ module bearing_base(){
 		}
 	
 		// screw holes for extruder
-		translate([50/2,-40,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
-		translate([-50/2,-40,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
+		translate([50/2,-45,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
+		hull(){
+			translate([-50/2,-45,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
+			translate([-50/2+4,-45,0])	#cylinder(h=40,r=4/2 + 0.3,center=true);
+		}
 
 		// extruder spacing
 			
