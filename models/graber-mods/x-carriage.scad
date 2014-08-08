@@ -12,7 +12,7 @@ module bearing_base(){
 			// middle block
 			translate([0,0,h/2])cube([8+25*2,25,h],center=true);
 			// side block
-			translate([-25-4-5,-27-25,0])cube([8+25*2+10,25,h],center=false);
+			translate([-25-4-5,-27-25-3,0])cube([8+25*2+10,25+3,h],center=false);
 //			translate([0,-32-5,5/2])cylinder(r=12/2,h=5,center=true);
 			
 		translate([29,-40,0]) beltclamp(h+4+5+10);
@@ -31,7 +31,7 @@ module bearing_base(){
 		
 		hull(){
 			translate([0,-40,0]) #cylinder(h=40,r=20/2,center=true);
-			translate([0,-50,0]) #cylinder(h=40,r=20/2,center=true);
+			translate([0,-60,0]) #cylinder(h=40,r=20/2,center=true);
 
 			//translate([hull_w/2,0,0]) #cylinder(h=40,r=18/2,center=true);
 			//translate([-hull_w/2,0,0]) #cylinder(h=40,r=18/2,center=true);
@@ -46,7 +46,7 @@ module bearing_base(){
 
 
 		// bump holes for extruder
-		translate([50/2+15,-45-4+15,-4])	#cylinder(h=8,r=12/2 + 0.3,center=false);
+		translate([50/2+15,-45-4+15,-4])	#cylinder(h=8,r=8/2 + 0.3,center=false);
 		hull(){
 			translate([-50/2,-45-4+15,-4])	#cylinder(h=8,r=12/2 + 0.3,center=false);
 			translate([-50/2+4,-45-4+15,-4])	#cylinder(h=8,r=12/2 + 0.3,center=false);
