@@ -1,5 +1,5 @@
 
-herofactory_test();
+//herofactory_test();
 
 $fn=30;
 $hero_sphere_r = 5;
