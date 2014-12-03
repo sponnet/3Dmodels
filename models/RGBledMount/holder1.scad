@@ -1,4 +1,4 @@
-include <../lego-herofactory/hero_factory_female_clamp.scad>;
+include <hero_factory_female_clamp.scad>;
 $fn=30;
 difference(){
 	union(){
