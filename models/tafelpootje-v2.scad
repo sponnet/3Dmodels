@@ -22,25 +22,31 @@ union(){
   cylinder(r=d/2+5,h=1);
  }
 
-cylinder(r=db/2,r2=db/2-1,h=2);
-}
+//cylinder(r=db/2,h=4);
+
 
 
 // Inside Fillet
-mirror([0,0,1]) translate([0,0,-4])difference() {
-	rotate_extrude(convexity=10,  $fn = smooth)
+mirror([0,0,1]) translate([0,0,-4])
+	{
+
+	//cylinder(r=db/2,r2=db/2-1,h=4);
+
+/*
+	#rotate_extrude(convexity=10,  $fn = smooth)
 		translate([cr-ct-r+pad,ct-pad,0])
 			square(r+pad,r+pad);
-	rotate_extrude(convexity=10,  $fn = smooth)
+*/
+	translate([0,0,-3]) rotate_extrude(convexity=10,  $fn = smooth)
 		translate([cr-ct-r,ct+r,0])
 			circle(r=r,$fn=smooth);
-	
-	translate([0,0,-4]) rotate_extrude(convexity=10,  $fn = smooth)
+/*	
+	translate([0,0,-2.5]) #rotate_extrude(convexity=10,  $fn = smooth)
 		translate([cr-ct-r,ct+r,0])
 			circle(r=r,$fn=smooth);
-
+*/
 }
-
+}
 
  translate([0,0,d/2+2]) hull(){
   translate([0,0,20]) sphere(r=d/2);
