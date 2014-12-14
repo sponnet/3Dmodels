@@ -9,7 +9,7 @@ ch = 10;
 cr = 16;
 ct = 2;
 r = 4;
-smooth = 50;	// Number of facets of rounding cylinder
+smooth = 20;	// Number of facets of rounding cylinder
 
 $fn = smooth;
 
