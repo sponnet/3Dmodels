@@ -1,5 +1,5 @@
-d=11;
-h=10;
+d=10.8;
+h=12;
 db=28;
 
 
@@ -43,8 +43,8 @@ mirror([0,0,1]) translate([0,0,-4])difference() {
 
 
  translate([0,0,d/2+2]) hull(){
-  translate([0,0,20])sphere(r=d/2);
-  sphere(r=d/2);
+  translate([0,0,20]) sphere(r=d/2);
+  translate([0,0,-1]) #sphere(r=d/2);
  }
 
 
