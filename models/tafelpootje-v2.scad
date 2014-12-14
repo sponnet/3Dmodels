@@ -1,4 +1,4 @@
-d=10;
+d=11;
 h=10;
 db=28;
 
@@ -9,7 +9,7 @@ ch = 10;
 cr = 16;
 ct = 2;
 r = 4;
-smooth = 20;	// Number of facets of rounding cylinder
+smooth = 30;	// Number of facets of rounding cylinder
 
 $fn = smooth;
 
@@ -31,9 +31,14 @@ mirror([0,0,1]) translate([0,0,-4])difference() {
 	rotate_extrude(convexity=10,  $fn = smooth)
 		translate([cr-ct-r+pad,ct-pad,0])
 			square(r+pad,r+pad);
-	#rotate_extrude(convexity=10,  $fn = smooth)
+	rotate_extrude(convexity=10,  $fn = smooth)
 		translate([cr-ct-r,ct+r,0])
 			circle(r=r,$fn=smooth);
+	
+	translate([0,0,-4]) rotate_extrude(convexity=10,  $fn = smooth)
+		translate([cr-ct-r,ct+r,0])
+			circle(r=r,$fn=smooth);
+
 }
 
 
