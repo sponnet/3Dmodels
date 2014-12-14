@@ -4,8 +4,8 @@ z_rod_offset = -10;
 z_rod_distance = -17;
 
 
-x_end2(0);
-//translate([-60,0,0]) x_end2(1);
+//x_end2(0);
+translate([-60,0,0]) x_end2(1);
 
 
 
