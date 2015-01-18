@@ -8,10 +8,10 @@ function plus(){
 	var radius = 50; 
 	var w = new Array();
     var s=30;
-   	var floors=10;
+   	var floors=9;
     for(var j=0;j<floors;j++){
-    	var rotation_offset_y = j*785.4;
-    	var rotation_offset_z = (j+45)*15.4;
+    	var rotation_offset_y = j*795.4;
+    	var rotation_offset_z = (j+45)*16.4;
 		switch(j % 2) {
     		case 0:
 		    	for(var i=0;i<s;i++){
