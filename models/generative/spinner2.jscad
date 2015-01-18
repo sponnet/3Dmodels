@@ -5,7 +5,7 @@ function main() {
 
 
 function plus(){
-	var radius = 70; 
+	var radius = 50; 
 	var w = new Array();
     var s=30;
    	var floors=10;
