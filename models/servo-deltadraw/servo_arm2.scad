@@ -30,12 +30,12 @@ arm_length = 100;
 
 translate([0,arm_length,-2.4-2]) difference(){
     union(){
-        translate([0,-arm_length,+2.4+2]) demo();
-        cylinder(r=9,h=10);
+        translate([0,-arm_length,+2.4+4]) demo();
+        cylinder(r=9,h=20);
         translate([-15,-20,0])cube([30,5,2]);
     }
-    cylinder(r=7,h=10);
-    translate([-9,-2,]) #cube([18,18,18]);
+    cylinder(r=6,h=20);
+    translate([-9,-2,]) #cube([18,18,28]);
 }
 
 arm_count = 1; // [1,2,3,4,5,6,7,8]
@@ -176,7 +176,7 @@ module servo_arm(params, arms) {
                 }
 
                 if (tooth_length >= 12) {
-                    translate([-head_heigth / 2 + 2, 3.8, -4]) {
+                    translate([-head_heigth / 2 + 2 +2, 3.8, -4]) {
                         rotate([90, 0, 0]) {
                             rotate([0, -90, 0]) {
                                 linear_extrude(height = head_heigth) {
@@ -219,7 +219,7 @@ module servo_arm(params, arms) {
     translate([0, 0, head_heigth]) {
         for (i = [0 : arm_count - 1]) {
             rotate([0, 0, i * (360 / arm_count)]) {
-                arm(arm_length, head_diameter + arm_thickness * 2, head_heigth, 2);
+                arm(arm_length, head_diameter + arm_thickness * 2, head_heigth, 4);
             }
         }
     }

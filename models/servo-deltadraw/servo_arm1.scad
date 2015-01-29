@@ -26,15 +26,15 @@
 
 
 
-arm_length = 150;
+arm_length = 125;
 
 translate([0,arm_length,-2.4-2]) difference(){
     union(){
-        translate([0,-arm_length,+2.4+2.6]) demo();
+        translate([0,-arm_length,+2.4+2.6+2]) demo();
   
         hull(){
-            cylinder(r=17/2,h=2);
-            translate([0,30,0])cylinder(r=17/2,h=2);
+            cylinder(r=17/2,h=4);
+            translate([0,30,0])cylinder(r=17/2,h=4);
         }
     }
         #translate([-6,5,0])
@@ -187,7 +187,7 @@ module servo_arm(params, arms) {
                 }
 
                 if (tooth_length >= 12) {
-                    translate([-head_heigth / 2 + 2, 3.8, -4]) {
+                    translate([-head_heigth / 2 + 4, 3.8, -4]) {
                         rotate([90, 0, 0]) {
                             rotate([0, -90, 0]) {
                                 linear_extrude(height = head_heigth) {
@@ -230,7 +230,7 @@ module servo_arm(params, arms) {
     translate([0, 0, head_heigth]) {
         for (i = [0 : arm_count - 1]) {
             rotate([0, 0, i * (360 / arm_count)]) {
-                arm(arm_length, head_diameter + arm_thickness * 2, head_heigth, 2);
+                arm(arm_length, head_diameter + arm_thickness * 2, head_heigth, 4);
             }
         }
     }
