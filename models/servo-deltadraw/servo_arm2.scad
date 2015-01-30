@@ -26,16 +26,16 @@
 
 
 
-arm_length = 100;
+arm_length = 125;
 
 translate([0,arm_length,-2.4-2]) difference(){
     union(){
         translate([0,-arm_length,+2.4+4]) demo();
         cylinder(r=9,h=20);
-        translate([-15,-20,0])cube([30,5,2]);
+        //translate([-15,-20,0])cube([30,5,2]);
     }
     cylinder(r=6,h=20);
-    translate([-9,-2,]) #cube([18,18,28]);
+    translate([-9,-2,-0.1]) #cube([18,18,28]);
 }
 
 arm_count = 1; // [1,2,3,4,5,6,7,8]
@@ -63,7 +63,7 @@ $fn = 40 / 1;
  *  3. Tooth width
  */
 FUTABA_3F_SPLINE = [
-    [3.8, 2.4, 2.1, 2],
+    [3.69, 2, 2.1, 2],
     [25, 0.3, 0.7, 0.1]
 ];
 
