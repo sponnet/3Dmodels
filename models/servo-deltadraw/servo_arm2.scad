@@ -30,7 +30,7 @@ arm_length = 125;
 
 translate([0,arm_length,-2.4-2]) difference(){
     union(){
-        translate([0,-arm_length,+2.4+4]) demo();
+        translate([0,-arm_length,+2.4+3.6]) demo();
         cylinder(r=9,h=20);
         //translate([-15,-20,0])cube([30,5,2]);
     }
@@ -63,7 +63,7 @@ $fn = 40 / 1;
  *  3. Tooth width
  */
 FUTABA_3F_SPLINE = [
-    [3.69, 2, 2.1, 2],
+    [3.4, 2, 3.1, 2],
     [25, 0.3, 0.7, 0.1]
 ];
 
